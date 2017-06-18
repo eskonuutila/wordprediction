@@ -1,11 +1,7 @@
 # Todo:
-# - Focus handling in text area
 # - Clear button
 
-source('cleanData.R')
-source('kn.R')
-library(shiny)
-library(shinyjs)
+source('predict.R')
 
 initializePredictor()
 
