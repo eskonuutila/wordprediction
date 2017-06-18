@@ -101,7 +101,7 @@ candidates <- function(model, dict, words, n=length(words), maxCandidates=5, pfi
         result
 }
 
-makePredictor <- function(modelOrPath, n=4, maxWords=5, debug=FALSE) {
+makePredictor <- function(modelOrPath, n=4, nPredictions=5, debug=FALSE) {
     N <- if (is.null(n)) max(ngrams$level)-1 else n
     if (is.character(modelOrPath)) {
         model <- loadModel(modelOrPath)
@@ -109,8 +109,8 @@ makePredictor <- function(modelOrPath, n=4, maxWords=5, debug=FALSE) {
         model <- modelOrPath
     }
     dict <- makePredictionDictionary(model)
-    function (words, debug=debug) {
-        candidates(model, dict, words, n=N, maxCandidates=maxWords, debug=debug)
+    function (words, nPredictions=nPredictions, debug=debug) {
+        candidates(model, dict, words, n=N, maxCandidates=nPredictions, debug=debug)
     }
 }
 
@@ -127,7 +127,7 @@ predictWords <- function(predictor, text, n=3, maxCandidates=5, pfield="pkn", ca
                 }
         }
         words <- c(paste0('S', 1:n), unlist(strsplit(sentence, ' ')))
-        candidates <- predictor(words, n, maxCandidates=maxCandidates, debug=debug)
+        candidates <- predictor(words, nPredictions=maxCandidates, debug=debug)
         if (debug) {
             printf('predictWords:\n')
             str(candidates)
