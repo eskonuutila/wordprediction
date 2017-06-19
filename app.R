@@ -15,18 +15,18 @@ ui <- shinyUI(fluidPage(
   titlePanel("Ngram-Based Word Prediction"),
   sidebarLayout(
     sidebarPanel(
-      sliderInput("nalternatives", "Number of best candidates to show:",
-                  min=1, max=maxPredictions, value=1),
       radioButtons("details", "Show details:",
                    c("No" = FALSE,
                      "Yes" = TRUE)),
+      numericInput("nalternatives", "Number of best candidates to show:",
+                   min=1, max=maxPredictions, value=1),
       # actionButton('predict', label=span('Predict')),
       # actionButton('submit', label=span('Submit')),
       actionButton('clear', label=span('Clear text'))
     ),
     mainPanel(
       fluidRow(
-        textAreaInput("text", label=span("Type text here"), value="", cols=80, rows=5),
+        textAreaInput("text", label=span("Type text here"), value="", cols=120, rows=5),
         tableOutput("prediction")
       )
 ))))
