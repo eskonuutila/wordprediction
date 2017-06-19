@@ -57,7 +57,7 @@ makePredictionDictionary <- function(ngrams, pfield="pkn") {
         dict
 }
 
-candidates <- function(model, dict, words, n=length(words), maxCandidates=5, pfield='pkn', debug=TRUE) {
+candidates <- function(model, dict, words, n=length(words), maxCandidates=5, pfield='pkn', debug=FALSE) {
         wl <- length(words)
         n <- min(wl, n)
         i <- wl - n

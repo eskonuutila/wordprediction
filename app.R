@@ -4,11 +4,11 @@
 source('predict.R')
 
 maxPredictions <- 5
-predictor <- makePredictor('data/model.feather', nPredictions=maxPredictions)
-print(predictor)
+predictor <- makePredictor('data/small.feather', nPredictions=maxPredictions)
+# print(predictor)
 
 getSuggestions <- function(text, index=nchar(text)) {
-  candidates <- predictWords(predictor, text, debug=TRUE)
+  candidates <- predictWords(predictor, text, debug=FALSE)
 }
 
 ui <- shinyUI(fluidPage(
