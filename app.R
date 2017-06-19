@@ -4,7 +4,7 @@
 source('predict.R')
 
 maxPredictions <- 5
-predictor <- makePredictor('data/kn.feather', nPredictions=maxPredictions)
+predictor <- makePredictor('data/model.feather', nPredictions=maxPredictions)
 print(predictor)
 
 getSuggestions <- function(text, index=nchar(text)) {
