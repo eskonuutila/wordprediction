@@ -57,7 +57,7 @@ makePredictionDictionary <- function(ngrams, pfield="pkn") {
         dict
 }
 
-candidates <- function(model, dict, words, n=length(words), maxCandidates=5, pfield='pkn', debug=FALSE) {
+candidates <- function(model, dict, words, n=length(words), maxCandidates=5, pfield='pkn', debug=TRUE) {
         wl <- length(words)
         n <- min(wl, n)
         i <- wl - n
@@ -132,10 +132,10 @@ predictWords <- function(predictor, text, n=3, maxCandidates=5, pfield="pkn", ca
             printf('predictWords:\n')
             str(candidates)
         }
-        prediction <- sapply(candidates$lastword,
-                             function (word) {
-                                 ifelse(caseHandling & (sentenceStart | word %in% c('i')), stri_trans_totitle(word), word)
-                             })
-        if (debug) printf('Prediction %s\n', prediction)
-        prediction
+        # candidates[,prediction:=sapply(lastword,
+        #                               function (word) {
+        #                                 ifelse(caseHandling & (sentenceStart | word %in% c('i')), stri_trans_totitle(word), word)
+        #                               })]
+        if (debug) printf('Prediction %s\n', candidates)
+        candidates
 }
