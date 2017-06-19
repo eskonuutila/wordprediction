@@ -4,7 +4,7 @@
 source('predict.R')
 
 maxPredictions <- 5
-predictor <- makePredictor('data/small.feather', nPredictions=maxPredictions)
+predictor <- makePredictor('data/model.feather', nPredictions=maxPredictions)
 # print(predictor)
 
 getSuggestions <- function(text, index=nchar(text)) {
@@ -21,7 +21,7 @@ ui <- shinyUI(fluidPage(
                    c("No" = FALSE,
                      "Yes" = TRUE)),
       # actionButton('predict', label=span('Predict')),
-      actionButton('submit', label=span('Submit')),
+      # actionButton('submit', label=span('Submit')),
       actionButton('clear', label=span('Clear text'))
     ),
     mainPanel(
@@ -33,7 +33,7 @@ ui <- shinyUI(fluidPage(
 
 server <- function(input, output, session) {
     output$prediction <- renderTable({
-      input$submit
+      # input$submit
       # if (!grepl('^\\s*$', input$text)) {
         sug <- getSuggestions(input$text, nchar(input$text))
         showN <- min(input$nalternatives, nrow(sug))
