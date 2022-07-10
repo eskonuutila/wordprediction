@@ -22,5 +22,5 @@ After this you can run the app in two different ways:
    * `File > Open Project`
    * Locate file `wordprediction.Rproj` in root of the cloned repo.
    * Click `app.R` in the `Files` tab.
-   * Click `Run App` in the `app.R` window.
+   * Click `Run App` at the top of the `app.R` window.
    
