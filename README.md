@@ -1,6 +1,6 @@
 # wordprediction
 
-This is a simple ngram-based next word prediction app. You write a piece of text and the app presents the most likely next word candidate(s). Not that the provided model is quite small.
+This is a simple ngram-based next word prediction app. You write a piece of text and the app presents the most likely next word candidate(s). Note that the provided model is quite small.
 
 ## Running
 
